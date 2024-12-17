@@ -4,14 +4,16 @@ print(f"{x}	->	type() = {type(x)}")
 print(f"{y}	->	type() = {type(y)}")
 print("1---------------")
 
-# Variables do not need to be declared with any particular type, and can even change type after they have been set.
+# Variables do not need to be declared with any particular type,
+#  and can even change type after they have been set.
 x = 4
 x = "yuandre"
 print(f"{x}	->	type() = {type(x)}")
 print("2---------------")
 
 # Casting
-# If you want to specify the data type of a variable, this can be done with casting.
+# If you want to specify the data type of a variable, this can be
+#  done with casting.
 x = str(3)
 print(f"{x}	->	type() = {type(x)}")
 x = int(3)
@@ -31,7 +33,7 @@ print("4---------------")
 # Single or Double Quotes?
 x = 'yuandre'
 y = "yuandre"
-# Both the same as. '' = ""
+#  Both the same as. '' = ""
 print(f"{x}	->	type() = {type(x)}")
 print(f"{y}	->	type() = {type(y)}")
 print("5---------------")
@@ -40,6 +42,6 @@ print("5---------------")
 # Variable names are case-sensitive.
 a = 5
 A = 10
-#A will not overwrite a
+#  A will not overwrite a
 print(a, A, (a + A))
 print("6---------------")
