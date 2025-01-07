@@ -1,0 +1,22 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "ft_package"
+version = "0.0.1"
+authors = [
+  { name="Görkem SEVER", email="gsever@student.42kocaeli.com.tr" },
+]
+description = "42 Kocaeli - Python for Data Science - 0 - Starting"
+readme = "README.md"
+requires-python = ">=3.10"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+Homepage = "https://github.com/Improvenss/ft_package"
+Issues = "https://github.com/Improvenss/ft_package"

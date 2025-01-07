@@ -22,7 +22,11 @@ current_time = time.time() # 1734906840.6811311 -> second.milisecond
 formatted_time = f"{current_time:,.4f}"
 # Format current time to scientific notation.
 scientific_notation = f"{current_time:.2e}"
+# LINK: https://www.geekster.in/articles/python-strftime/#:~:text=Function%20In%20Python-,Python%20datetime.,for%20%E2%80%9Cstring%20format%20time%E2%80%9D.
 # Format the current date.
+# %b: Abbreviated month name (e.g., Jan, Feb)
+# %d: Day of the month (01-31)
+# %Y: Year (4 digits)
 current_time = datetime.datetime.now().strftime("%b %d %Y")
 # Print the formatted output
 print(f"Seconds since January 1, 1970: {formatted_time} or \
