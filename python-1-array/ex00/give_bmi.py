@@ -12,16 +12,24 @@ def give_bmi(height: list[int | float], weight: list[int | float]) -> list[int |
     :return: List of BMI values.
     :raises ValueError: If the input lists are not of the same length, contain invalid types, or are empty.
     """
-    if not isinstance(height, list) or not isinstance(weight, list):
-        raise ValueError("Both height and weight must be lists.")
-    if len(height) == 0 or len(weight) == 0:
-        raise ValueError("Height and weight lists cannot be empty.")
+    if not isinstance(height, list):
+        raise TypeError("expected 'height' to be a list.")
+    if not isinstance(weight, list):
+        raise TypeError("expected 'weight' to be a list.")
+    if not height:
+        raise ValueError("The 'height' list cannot be empty.")
+    if not weight:
+        raise ValueError("The 'weight' list cannot be empty.")
     if len(height) != len(weight):
-        raise ValueError("Height and weight lists must be of the same length.")
-    if not all(isinstance(h, (int, float)) and h > 0 for h in height):
-        raise ValueError("Height values must be positive numbers.")
-    if not all(isinstance(w, (int, float)) and w > 0 for w in weight):
-        raise ValueError("Weight values must be positive numbers.")
+        raise ValueError("'height' and 'weight' lists must be of equal length.")
+    if not all(isinstance(h, (int, float)) for h in height):
+        raise TypeError("all elements in 'height' must be int or float.")
+    if not all(h > 0 for h in height):
+        raise ValueError("all elements in 'height' must be positive numbers.")
+    if not all(isinstance(w, (int, float)) for w in weight):
+        raise TypeError("all elements in 'weight' must be int or float.")
+    if not all(w > 0 for w in weight):
+        raise ValueError("all elements in 'weight' must be positive numbers.")
     # bmi_values = np.array(weight) / np.array(height) ** 2
     bmi_values = np.array(weight) / pow(np.array(height), 2)
     return bmi_values.tolist()
@@ -41,32 +49,29 @@ def apply_limit(bmi: list[int | float], limit: int) -> list[bool]:
         raise ValueError("Limit must be an integer.")
     return [b > limit for b in bmi]
 
-def main():
-    """
-    Main function for testing purposes.
-    """
-    try:
-        # height = [2.71, 1.15]
-        # weight = [165.3, 38.4]
-        height = [2.71, 1.15, 11.1]
-        weight = [165.3, 38.4]
-        bmi = give_bmi(height, weight)
-        print(bmi, type(bmi))
-        print(apply_limit(bmi, 26))
-    except ValueError as e:
-        print(f"Error: {e}")
-    except Exception as e:
-        print(f"Error: {e}")
+# def main():
+#     try:
+#         height = [2.71, 1.15]
+#         weight = [165.3, 38.4]
+#         # height = [2.71, 1.15, 11.1]
+#         # weight = [165.3, 38.4]
+#         bmi = give_bmi(height, weight)
+#         print(bmi, type(bmi))
+#         print(apply_limit(bmi, 26))
+#     except ValueError as ve:
+#         print(f"Error: {ve}")
+#     except Exception as e:
+#         print(f"Error: {e}")
 
-# give_bmi fonksiyonunuz, girdide 2 tam sayı veya kayan noktalı sayı
-#  listesi alır ve BMI değerlerinin bir listesini döndürür.
-# apply_limit fonksiyonunuz, bir tam sayı veya kayan noktalı sayı
-#  listesi ve bir limiti temsil eden bir tam sayıyı parametre olarak
-#  kabul eder. Boolean'lardan oluşan bir liste döndürür
-#  (Limitin üzerindeyse True). Listeler aynı boyutta değilse, int veya
-#  float değilse hata durumlarını ele almanız gerekir...
-if __name__ == "__main__":
-    main()
+# # give_bmi fonksiyonunuz, girdide 2 tam sayi veya kayan noktali sayi
+# #  listesi alir ve BMI degerlerinin bir listesini dondurur.
+# # apply_limit fonksiyonunuz, bir tam sayi veya kayan noktali sayi
+# #  listesi ve bir limiti temsil eden bir tam sayiyi parametre olarak
+# #  kabul eder. Boolean'lardan oluşan bir liste dondurur
+# #  (Limitin uzerindeyse True). Listeler ayni boyutta degilse, int veya
+# #  float degilse hata durumlarini ele almaniz gerekir...
+# if __name__ == "__main__":
+#     main()
 
 # What is BMI?
 #  BMI = Body Mass Index = Vucut kitle indexi
